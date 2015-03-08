@@ -55,7 +55,15 @@ visual.color.palettes = ['00', '01', '02', '03', '04'];
 visual.color.palette = function(value) {
   romdom.writeRamByte('0773', visual.color.palettes[value]);
 }
-visual.sprites = {};
+visual.sprites = [
+  {
+    "address": 0754, 
+  },
+];
+
+game.onUpdate = function(address){
+
+};
 
 game.scroll = {};
 game.scroll.horizontal = function(offset) {
