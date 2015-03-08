@@ -51,10 +51,20 @@ visual.color = {
     romdom.writeRamByte('0779', value);
   }
 };
+visual.color.palettes = ['00', '01', '02', '03', '04'];
+visual.color.palette = function(value) {
+  romdom.writeRamByte('0773', visual.color.palettes[value]);
+}
 visual.sprites = {};
 
+game.scroll = {};
 game.scroll.horizontal = function(offset) {
   romdom.writeRamByte('0778', offset);
+};
+
+game.level = {};
+game.level.advance = function() {
+  romdom.writeRamByte('0770', '02');
 };
 
 ppu.write = function(value) {
