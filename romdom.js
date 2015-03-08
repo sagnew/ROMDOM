@@ -40,7 +40,7 @@ romdom.memoryListener = function(address, callback) {
 // Game specific functions.
 sound.music = {};
 sound.effects = {};
-sound.tracks = [];
+sound.tracks = [01, 02, 04, 07];
 
 visual.color = {};
 visual.sprites = {};
