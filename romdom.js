@@ -73,8 +73,8 @@ visual.sprites = [
   },
 ];
 
-game.onUpdate = function(address){
-
+game.onUpdate = function(sprite, callback){
+  romdom.memoryListener(sprite.address, callback);
 };
 
 game.scroll = {};
