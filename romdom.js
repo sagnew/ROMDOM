@@ -38,9 +38,13 @@ romdom.memoryListener = function(address, callback) {
 };
 
 // Game specific functions.
-sound.music = {};
+sound.tracks = [];
+sound.music = {
+  changeTrack: function(track) {
+    romdom.writeRamByte('00FB', sound.tracks[track]);
+  }
+};
 sound.effects = {};
-sound.tracks = [01, 02, 04, 07];
 
 visual.color = {};
 visual.sprites = {};
