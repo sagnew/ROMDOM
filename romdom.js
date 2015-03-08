@@ -1,6 +1,12 @@
 var fs = require('fs'),
-    romdom = {};
+    romdom = {},
+    game = {},
+    sound = {},
+    ppu = {},
+    visual = {};
 
+// Basic emulator/memory utility functions.
+//
 romdom.readRamByte = function(address, callback) {
   fs.writeFile('action.txt', 'readRamByte', function(err){
     if(err) { console.log(err); return callback(err); }
@@ -27,5 +33,24 @@ romdom.writeRamByte = function(address, value) {
     if(err) throw err;
   });
 };
+
+romdom.memoryListener = function(address, callback) {
+};
+
+// Game specific functions.
+sound.music = {};
+sound.effects = {};
+sound.tracks = [];
+
+visual.color = {};
+visual.sprites = {};
+
+ppu.write = function(value) {
+  romdom.writeRamByte('0200', value);
+};
+game.sound = sound;
+game.visual = visual;
+game.ppu = ppu;
+romdom.game = game;
 
 module.exports = romdom;
