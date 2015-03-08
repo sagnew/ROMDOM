@@ -53,6 +53,10 @@ visual.color = {
 };
 visual.sprites = {};
 
+game.scroll.horizontal = function(offset) {
+  romdom.writeRamByte('0778', offset);
+};
+
 ppu.write = function(value) {
   romdom.writeRamByte('0200', value);
 };
