@@ -35,6 +35,18 @@ romdom.writeRamByte = function(address, value) {
 };
 
 romdom.memoryListener = function(address, callback) {
+  romdom.readRamByte(address, function(err, initial) {
+    console.log("init" + initial);
+    if(err) { return callback(err); }
+    setInterval(function() {
+      romdom.readRamByte(address, function(err, current) {
+        if(err) { return callback(err); }
+        if(initial !== current) {
+          callback(null, current);
+        }
+      });
+    }, 1000);
+  });
 };
 
 // Game specific functions.
