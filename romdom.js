@@ -2,6 +2,14 @@ var fs = require('fs'),
     romdom = {};
 
 romdom.readRamByte = function() {
+  fs.writeFile('action.txt', 'writeRamByte', function(err){
+    if(err) throw err;
+  });
+
+  fs.readFile('value.txt', function(err, data){
+    if(err) throw err;
+    console.log(data);
+  });
 };
 
 romdom.writeRamByte = function(address, value) {
@@ -9,7 +17,7 @@ romdom.writeRamByte = function(address, value) {
     if(err) throw err;
   });
 
-  fs.writeFile('value.txt', address, function(err){
+  fs.writeFile('value.txt', value, function(err){
     if(err) throw err;
   });
 
