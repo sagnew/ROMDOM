@@ -46,12 +46,17 @@ sound.music = {
 };
 sound.effects = {};
 
-visual.color = {};
+visual.color = {
+  changePPUMode: function(value) {
+    romdom.writeRamByte('0779', value);
+  }
+};
 visual.sprites = {};
 
 ppu.write = function(value) {
   romdom.writeRamByte('0200', value);
 };
+
 game.sound = sound;
 game.visual = visual;
 game.ppu = ppu;
