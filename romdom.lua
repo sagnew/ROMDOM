@@ -25,7 +25,7 @@ end;
 
 function read_ram_byte (address, value)
   if(address ~= nil) then
-    local value = memory.readByte(address);
+    local value = tonumber(memory.readbyte(address), 16);
     write_file("value.txt", value);
   end;
 end;
