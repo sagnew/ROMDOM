@@ -8,14 +8,16 @@ var fs = require('fs'),
 // Basic emulator/memory utility functions.
 //
 romdom.readRamByte = function(address, callback) {
-  fs.writeFile('action.txt', 'readRamByte', function(err){
+  fs.writeFile('address.txt', address, function(err){
     if(err) { console.log(err); return callback(err); }
-    fs.writeFile('address.txt', address, function(err){
+    fs.writeFile('action.txt', 'readRamByte', function(err){
       if(err) { console.log(err); return callback(err); }
-      fs.readFile('value.txt', { 'encoding': 'utf8' }, function(err, data){
-        if(err) { console.log(err); return callback(err); }
-        callback(null, data);
-      });
+      setTimeout(function() {
+        fs.readFile('value.txt', { 'encoding': 'utf8' }, function(err, data){
+          if(err) { console.log(err); return callback(err); }
+          callback(null, data);
+        });
+      }, 500);
     });
   });
 };
@@ -67,10 +69,11 @@ visual.color.palettes = ['00', '01', '02', '03', '04'];
 visual.color.palette = function(value) {
   romdom.writeRamByte('0773', visual.color.palettes[value]);
 }
-visual.sprites = [
+
+game.sprites = [
   {
-    "address": 0754, 
-  },
+    "address": '0754',
+  }
 ];
 
 game.onUpdate = function(sprite, callback){

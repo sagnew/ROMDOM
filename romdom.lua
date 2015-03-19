@@ -32,8 +32,14 @@ end;
 
 function handle_input ()
   local action = read_file("action.txt");
-  local address = tonumber(read_file("address.txt"), 16);
-  local value = tonumber(read_file("value.txt"), 16);
+  local addr_string = read_file("address.txt");
+  if addr_string ~= nil then
+    address = tonumber(addr_string, 16);
+  end
+  local value_str = read_file("value.txt")
+  if addr_string ~= nil then
+    value = tonumber(value_str, 16);
+  end
 
   if action == "writeRamByte" then
     write_ram_byte(address, value);
