@@ -1,6 +1,3 @@
-prev = "";
-msg = "";
-
 function write_file (filename, text)
   output = io.open(filename, "w");
   io.output(output);
@@ -33,10 +30,12 @@ end;
 function handle_input ()
   local action = read_file("action.txt");
   local addr_string = read_file("address.txt");
+  local value_str = read_file("value.txt")
+
   if addr_string ~= nil then
     address = tonumber(addr_string, 16);
   end
-  local value_str = read_file("value.txt")
+
   if addr_string ~= nil then
     value = tonumber(value_str, 16);
   end
@@ -46,6 +45,7 @@ function handle_input ()
   elseif action == "readRamByte" then
     read_ram_byte(address);
   end;
+
   write_file("action.txt", "null");
 end;
 
