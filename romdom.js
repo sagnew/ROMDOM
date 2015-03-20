@@ -1,5 +1,5 @@
 var fs = require('fs'),
-    game = require('./Games/mario'),
+    game = require('./Games/zelda'),
     utils = require('./utils'),
 
     // I know this is dirty, but I will use _.extend later instead.
@@ -9,5 +9,6 @@ var fs = require('fs'),
 romdom.currentGame = function() {
   return game;
 };
+romdom.game = game;
 
 module.exports = romdom;

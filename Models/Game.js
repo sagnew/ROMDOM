@@ -21,7 +21,6 @@ var utils = require('../utils'),
               ppuAddress: options.ppuAddress
             }
           };
-      console.log(options);
 
       game.sound.changeTrack = function(track) {
         utils.writeRamByte(this.musicAddress, this.tracks[track]);
