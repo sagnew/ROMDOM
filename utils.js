@@ -45,4 +45,10 @@ utils.memoryListener = function(address, callback) {
   });
 };
 
+utils.printToScreen = function(text) {
+  fs.writeFile('print.txt', text, function(err){
+    if(err) throw err;
+  });
+};
+
 module.exports = utils;

@@ -30,7 +30,10 @@ end;
 function handle_input ()
   local action = read_file("action.txt");
   local addr_string = read_file("address.txt");
-  local value_str = read_file("value.txt")
+  local value_str = read_file("value.txt");
+  local print_text = read_file("print.txt");
+
+  emu.message(print_text);
 
   if addr_string ~= nil then
     address = tonumber(addr_string, 16);
