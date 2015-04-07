@@ -32,6 +32,21 @@ utils.readRomByte = function(address, callback) {
   });
 };
 
+// Sorry NYTM
+utils.readRomByteSync = function(address) {
+  var date = new Date();
+  var curDate = null;
+
+  fs.writeFileSync('address.txt', address);
+  fs.writeFileSync('action.txt', 'readRomByte');
+
+  // This is the worst code I've ever written.
+  do { curDate = new Date(); }
+  while(curDate-date < 500);
+
+  return fs.readFileSync('value.txt', { 'encoding': 'utf8' });
+};
+
 utils.writeRamByte = function(address, value) {
   fs.writeFile('address.txt', address, function(err){
     if(err) throw err;

@@ -1,21 +1,18 @@
 var fs = require('fs'),
-    game = require('./Games/mario'),
     utils = require('./utils'),
 
     // I know this is dirty, but I will use _.extend later instead.
     romdom = utils;
 
 // Returns an object corresponding to the current game being emulated.
-romdom.getCurrentGame = function(cb) {
-  romdom.readRomByte('0764', function(err, val){
-    if(val === '5'){
-      cb(require('./Games/mario'); 
-    }else{
-      cb(require('./Games/zelda'); 
-    }
-  });
-  return game;
+romdom.setCurrentGame = function() {
+  // This is terrible
+  var val = romdom.readRomByteSync('0764');
+  if(val === '5'){
+    return require('./Games/mario');
+  }else{
+    return require('./Games/zelda');
+  }
 };
-romdom.game = game;
 
 module.exports = romdom;
