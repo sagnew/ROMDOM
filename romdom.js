@@ -6,7 +6,14 @@ var fs = require('fs'),
     romdom = utils;
 
 // Returns an object corresponding to the current game being emulated.
-romdom.getCurrentGame = function() {
+romdom.getCurrentGame = function(cb) {
+  romdom.readRomByte('0764', function(err, val){
+    if(val === '5'){
+      cb(require('./Games/mario'); 
+    }else{
+      cb(require('./Games/zelda'); 
+    }
+  });
   return game;
 };
 romdom.game = game;
