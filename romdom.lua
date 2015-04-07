@@ -20,9 +20,16 @@ function write_ram_byte (address, value)
   end;
 end;
 
-function read_ram_byte (address, value)
+function read_ram_byte (address)
   if(address ~= nil) then
     local value = tonumber(memory.readbyte(address), 16);
+    write_file("value.txt", value);
+  end;
+end;
+
+function read_rom_byte (address)
+  if(address ~= nil) then
+    local value = tonumber(rom.readbyte(address), 16);
     write_file("value.txt", value);
   end;
 end;
@@ -47,6 +54,8 @@ function handle_input ()
     write_ram_byte(address, value);
   elseif action == "readRamByte" then
     read_ram_byte(address);
+  elseif action == "readRomByte" then
+    read_rom_byte(address);
   end;
 
   write_file("action.txt", "null");

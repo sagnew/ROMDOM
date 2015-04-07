@@ -6,7 +6,7 @@ var fs = require('fs'),
     romdom = utils;
 
 // Returns an object corresponding to the current game being emulated.
-romdom.currentGame = function() {
+romdom.getCurrentGame = function() {
   return game;
 };
 romdom.game = game;

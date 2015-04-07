@@ -16,6 +16,22 @@ utils.readRamByte = function(address, callback) {
   });
 };
 
+// Sorry NYTM
+utils.readRomByte = function(address, callback) {
+  fs.writeFile('address.txt', address, function(err){
+    if(err) { console.log(err); return callback(err); }
+    fs.writeFile('action.txt', 'readRomByte', function(err){
+      if(err) { console.log(err); return callback(err); }
+      setTimeout(function() {
+        fs.readFile('value.txt', { 'encoding': 'utf8' }, function(err, data){
+          if(err) { console.log(err); return callback(err); }
+          callback(null, data);
+        });
+      }, 500);
+    });
+  });
+};
+
 utils.writeRamByte = function(address, value) {
   fs.writeFile('address.txt', address, function(err){
     if(err) throw err;
