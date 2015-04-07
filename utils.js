@@ -32,7 +32,6 @@ utils.writeRamByte = function(address, value) {
 
 utils.memoryListener = function(address, callback) {
   utils.readRamByte(address, function(err, initial) {
-    console.log("init" + initial);
     if(err) { return callback(err); }
     var interval = setInterval(function() {
       utils.readRamByte(address, function(err, current) {

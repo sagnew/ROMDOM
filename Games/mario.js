@@ -1,7 +1,7 @@
 var Game = require('../Models/Game'),
     attributes = {
       // RAM address for currently playing music.
-      musicAddress: '00F8',
+      musicAddress: '00FB',
 
       // Hex values for possible in-game music tracks.
       tracks: ['01', '02', '04', '07'],
