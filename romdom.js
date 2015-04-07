@@ -1,5 +1,5 @@
 var fs = require('fs'),
-    game = require('./Games/zelda'),
+    game = require('./Games/mario'),
     utils = require('./utils'),
 
     // I know this is dirty, but I will use _.extend later instead.

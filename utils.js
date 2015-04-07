@@ -34,10 +34,11 @@ utils.memoryListener = function(address, callback) {
   utils.readRamByte(address, function(err, initial) {
     console.log("init" + initial);
     if(err) { return callback(err); }
-    setInterval(function() {
+    var interval = setInterval(function() {
       utils.readRamByte(address, function(err, current) {
         if(err) { return callback(err); }
         if(initial !== current) {
+          clearTimeout(interval);
           callback(null, current);
         }
       });
