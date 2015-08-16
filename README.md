@@ -13,7 +13,7 @@ Once you have your emulator set up:
 
 1. Open a new Lua script(in FCEUX this is done by clicking file -> Lua -> New Lua script window), and run "romdom.lua" found in the base directory of this repository. This allows the emulator to listen for commands sent from your Node environment.
 2. Require romdom.js in your JavaScript code, which will allow you to access our API to interact with the emulator.
-```
+```javascript
 // If you are in the same directory.
 var rd = require('./romdom');
 
